@@ -25,14 +25,12 @@ html{
     box-sizing: border-box;
 }
 body{
-    background-color: var(--light-brown);
+    background-color: var(--dark-brown);
     font-family: var(--tertiary-font);
     color: var(--grey-para);
-    line-height: 1.5;
 }
 .header{
     font-family: var(--secondary-font);
-    background: url(/images/coffee-machine-making-coffee-bar_1303-19533.jpg) fill no-repeat;
     height: 100vh;
 }
 .navigation{
@@ -59,7 +57,6 @@ body{
     letter-spacing: var(--spacing);
     margin:0 1rem;
     font-weight: bold;
-     
 }
 .logo-hero{
     
@@ -74,5 +71,18 @@ ul{
 }
 a{
     text-decoration: none;
-    color: black
+    color: var(--white-headings);
+}
+@media (max-width:830px){
+    
+    .navigation{
+        background-color: var(--white-headings);
+    }
+    .link-container{
+        height: 0;
+        visibility: hidden;
+    }
+    a{
+        color: black;
+    }
 }
