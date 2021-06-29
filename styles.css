@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Open+Sans:wght@300;400&family=Oswald:wght@400;600&display=swap');
+
+:root{
+    --primary-font: 'Merriweather', serif;
+    --secondary-font : 'Oswald', sans-serif;
+    --tertiary-font: 'Open Sans', sans-serif;
+    --yellow-coffee:#c7a17a;
+    --grey-para:#acacac;
+    --white-headings:#ffffff;
+    --dark-brown:#151412;
+    --light-brown:#eae7de;
+    --transition:all 0.5s linear;
+    --spacing:4px;
+    --shadow-light:0 5px 15px rgba(0,0,0,0.1);
+    --shadow-dark:0 5px 15px rgba(0,0,0,0.2);
+}
+html{
+    scroll-behavior: smooth;
+}
+*,
+::after,
+::before{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--light-brown);
+    font-family: var(--tertiary-font);
+    color: var(--grey-para);
+    line-height: 1.5;
+}
+.header{
+    font-family: var(--secondary-font);
+    background: url(/images/coffee-machine-making-coffee-bar_1303-19533.jpg) fill no-repeat;
+    height: 100vh;
+}
+.navigation{
+    padding: 1rem 1.5rem;
+}
+.nav-center{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.link-container{
+    display: block;
+}
+.links{
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+    align-items: center;
+}
+.link-item{
+    text-transform: uppercase;
+    letter-spacing: var(--spacing);
+    margin:0 1rem;
+    font-weight: bold;
+     
+}
+.logo-hero{
+    
+    height: 10vh;
+    object-fit: fill;
+}
+.toggle-btn{
+    display: none;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black
+}
