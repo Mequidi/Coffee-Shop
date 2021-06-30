@@ -40,7 +40,7 @@ body{
 .navigation{
     padding: 1rem 1.5rem;
     max-height: 10vh;
-    /* background-color: var(--dark-brown); */
+    background-color: var(--dark-brown);
 }
 .nav-center{
     width: 100%;
@@ -83,19 +83,7 @@ a{
     text-decoration: none;
     color: var(--white-headings);
 }
-@media (max-width:830px){
-    
-    .navigation{
-        background-color: var(--white-headings);
-    }
-    .link-container{
-        height: 0;
-        visibility: hidden
-    }
-    .link-item a{
-        color: black;
-    }
-}
+
 /* banner */
 .banner{
     height: 90vh;
@@ -155,8 +143,8 @@ a{
     transform: scale(1.5);
 }
 
-.about{
-   padding-top: 3rem;
+section{
+   padding: 3rem 0;
 }
 .about-container{
     display: grid;
@@ -184,7 +172,7 @@ a{
 }
 .underline{
     background-color: var(--yellow-coffee);
-    max-width: 80px;
+    width: 80px;
     height: 0.3rem;
     margin-bottom: 0.5rem;
 }
@@ -195,3 +183,117 @@ a{
     width: 100%;
     border-radius: 0.5rem;
 }
+.whh{
+    background: url(/images/whhbcg\ barista.jpg) top/cover fixed no-repeat;
+    line-height: 1.5;
+    /* linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))  */
+}
+.whh-container{
+    text-align: center;
+}
+.whh-container h2{
+    font-family: var(--primary-font);
+    font-style: italic;
+    color: var(--yellow-coffee);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.whh-container h1{
+    color: var(--white-headings);
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: var(--spacing);
+}
+.whh-container .underline{
+    margin: auto;
+    width: 8rem;
+    height: 2px;
+}
+.whh-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    margin:4rem 8rem 0 8rem;
+    column-gap: 2.5rem;
+    text-align: left;
+}
+.whh-content h1{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    letter-spacing: 2px;
+}
+.whh-content p{
+    font-size: 0.9rem;
+    color: var(--white-headings);
+    margin: 1rem 0;
+}
+.whh-content .underline{
+    margin: 0;
+}
+.schedule{
+   border: 3px solid var(--white-headings);
+   padding: 1.5rem 1rem;
+   background: linear-gradient(rgba(21, 20, 18,0.5),rgba(21,20,18,0.5)),url(/images/schedule\ bcg\ b&w.jpg) no-repeat center/cover;
+   line-height: 1.5;
+}
+.schedule h2{
+    color: var(--white-headings);
+    font-family: var(--secondary-font);
+    font-style: normal;
+    font-size:2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom:3rem;
+}
+.whh img{
+    width: 100%;
+}
+i{
+    transition: all 0.3s linear;  
+}
+.span-read-more{
+    color: var(--yellow-coffee);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.span-read-more:hover i{
+    display: inline-block;
+    transform: translateX(5px);
+}
+.days-container{
+    display:flex;
+    justify-content: space-between;
+    margin: 0.3rem 0;
+}
+.day{
+    color: var(--white-headings);
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+    text-align: left;
+}
+.time{
+    text-align: right;
+    color: var(--yellow-coffee);
+    font-weight: bold;
+}
+.weekdays{
+    margin-bottom: 3rem;
+}
+.callno{
+    color: var(--grey-para);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--primary-font);
+}
+
+  
