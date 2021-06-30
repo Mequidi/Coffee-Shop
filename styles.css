@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Open+Sans:wght@300;400&family=Oswald:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
 :root{
     --primary-font: 'Merriweather', serif;
@@ -7,7 +9,7 @@
     --yellow-coffee:#c7a17a;
     --grey-para:#acacac;
     --white-headings:#ffffff;
-    --dark-brown:#151412;
+    --dark-brown:rgb(21, 20, 18);
     --light-brown:#eae7de;
     --transition:all 0.5s linear;
     --spacing:4px;
@@ -32,9 +34,13 @@ body{
 .header{
     font-family: var(--secondary-font);
     height: 100vh;
+    background:linear-gradient(rgba(21, 20, 18, 0.3),#000000b3),url('/images/image.jfif')  no-repeat left bottom/cover;
 }
+/* navbar */
 .navigation{
     padding: 1rem 1.5rem;
+    max-height: 10vh;
+    /* background-color: var(--dark-brown); */
 }
 .nav-center{
     width: 100%;
@@ -59,8 +65,7 @@ body{
     font-weight: bold;
 }
 .logo-hero{
-    
-    height: 10vh;
+    height: 5vh;
     object-fit: fill;
 }
 .toggle-btn{
@@ -80,9 +85,60 @@ a{
     }
     .link-container{
         height: 0;
-        visibility: hidden;
+        visibility: hidden
     }
-    a{
+    .link-item a{
         color: black;
     }
+}
+/* banner */
+.banner{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner-container{   
+    max-width: 800px;
+    color: var(--white-headings);
+    text-align: center;
+    
+}
+.banner-heading{
+    font-size: 5rem;
+    letter-spacing: var(--spacing);
+    text-transform: uppercase;
+}
+.banner-text{
+    font-family:'Merriweather';
+    font-style: italic;
+    margin:1rem auto;
+    line-height: 1.5;
+    max-width: 600px;
+    font-size: 20px;
+}
+.read-more{
+    background-color: transparent;
+    font-family: var(--tertiary-font);
+    border: 2px solid var(--white-headings);
+    font-weight: bold;
+    padding: 0.8rem 1.4rem;
+    transition: all 0.3s ease-in;
+    color: var(--white-headings);
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.read-more:hover{
+    background-color: var(--white-headings);
+    color: var(--dark-brown);
+}
+.social-links{
+    font-size: 30px;
+}
+.social-icon{
+    margin:0 0.2rem;
 }
