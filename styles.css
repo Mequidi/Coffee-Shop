@@ -332,7 +332,48 @@ i{
     object-fit: cover;
     height: 100%;
     width: 100%;
-    
+}
+.quote{
+    text-align: center;
+    line-height: 1.5;
+}
+.quote-container{
+    max-width: 800px;
+    margin: auto;
+}
+.double-quotes{
+    color: var(--yellow-coffee);
+    font-size: 50px;
+}
+.quote-text{
+    margin: 2rem 0;
+    color: var(--white-headings);
+    font-size: 20px;
+    font-style: italic;
+    font-family: var(--primary-font);
+}
+.quote-person{
+    text-transform: uppercase;
+    color: var(--white-headings);
+    letter-spacing: var(--spacing);
+    margin: 2rem 0;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+.quote-btn{
+    height: 1rem;
+    width: 1rem;
+    margin:0 1rem;
+    border-radius: 50%;
+    border:none;
+    background-color: var(--white-headings);
+    cursor: pointer;
+}
+.clicked-btn{
+    background-color: var(--yellow-coffee);
+    transform: scale(1.2);
 }
 
   
