@@ -9,15 +9,41 @@ const quotes = [
     },
     {
         name:"jane doe",
-        text:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis explicabo id distinctio quis voluptatum hic corporis tempora officia molestiae doloribus, cum dolore voluptatem porro dignissimos adipisci autem consequuntur minima! Quis."
+        text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quaerat quasi minus debitis nam esse sequi, atque totam rem maiores?"
     }
 ]
 const quoteBtns = document.querySelectorAll(".quote-btn"); 
-quoteBtns.forEach((btn) =>{
+const quoteText = document.querySelector(".quote-text");
+const quotePerson = document.querySelector(".quote-person");
+
+let countForQuotes = 0;
+
+quoteBtns.forEach((btn,index) =>{
     btn.addEventListener("click",()=>{
-        console.log("btn-clicked!");
-        btn.classList.add("clicked-btn");
-    } )
+        quoteBtns.forEach((thatBtn)=>{
+            if(thatBtn != btn)
+                thatBtn.classList.remove("clicked-btn")
+                btn.classList.add("clicked-btn");
+        })
+        quoteText.textContent=quotes[index].text;
+        quotePerson.textContent = quotes[index].name;
+    })
 })
 
+
+setInterval(()=>{
+    countForQuotes++;
+    if(countForQuotes>2)
+        countForQuotes=0;
+    changeQuote(countForQuotes);
+},5000);
+
+function changeQuote(x){
+    quoteText.textContent = quotes[x].text;
+    quotePerson.textContent = quotes[x].name;
+    quoteBtns.forEach((btn)=>{
+        btn.classList.remove("clicked-btn");
+    })
+    quoteBtns[x].classList.add("clicked-btn");
+}
 
