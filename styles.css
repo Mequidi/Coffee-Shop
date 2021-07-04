@@ -30,6 +30,7 @@ body{
     background-color: var(--dark-brown);
     font-family: var(--tertiary-font);
     color: var(--grey-para);
+    /* line-height: 1.5; */
 }
 .header{
     font-family: var(--secondary-font);
@@ -338,7 +339,7 @@ i{
     line-height: 1.5;
 }
 .quote-container{
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
 }
 .double-quotes{
@@ -376,4 +377,53 @@ i{
     transform: scale(1.2);
 }
 
-  
+.flavours{
+    background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),url(/images/pexels-photo-b&w.jpg) center/cover fixed no-repeat;
+    line-height: 1.5;
+    /* linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))  */
+}
+.flavour-heading-container{
+    text-align: center;
+}
+.flavour-heading-container .underline{
+    margin: auto;
+    width: 8rem;
+    height: 2px;
+}
+.flavour-heading-container h2{
+    font-family: var(--primary-font);
+    font-style: italic;
+    color: var(--yellow-coffee);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.flavour-heading-container h1{
+    color: var(--white-headings);
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: var(--spacing);
+} 
+.flavour-herocontent-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    text-align: center;
+    justify-content: center;
+    margin: 0 5rem
+}
+.flavour-herocontent-container h2{
+    margin: 1rem 0;
+    color: var(--white-headings);
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    letter-spacing: 2px;
+}
+.flavour-herocontent-container p{
+    color: var(--white-headings);
+    font-size: 14px;
+}
+
