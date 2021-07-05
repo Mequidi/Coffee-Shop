@@ -619,14 +619,19 @@ i{
 #input{
     background: var(--dark-brown);
     border: 1px solid var(--grey-para);
-    padding: 0.5rem;
+    padding: 0.7rem;
     margin-right: 1rem;
 }
 .submit-email-btn{
-    padding:0.5rem 0.8rem;
+    padding:0.5rem 1rem;
     color: var(--white-headings);
     background: var(--yellow-coffee);
     border: none;
+    transition: all 0.3s linear;
+    font-size: 1.2rem;
+}
+.submit-email-btn:hover{
+    background: #e4b98f;
 }
 .location-info h3{
     margin-bottom: 1rem;
