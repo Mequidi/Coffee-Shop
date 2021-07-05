@@ -461,20 +461,19 @@ i{
 }
 .shop-img-container{
     position: relative;
-   /* overflow: hidden;  */
+    overflow: hidden; 
+    padding: 0.5rem;
 }
 .shop-img-container img{
     width: 100%;
     height: 100%;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
     transition: all 0.3s linear;
 }
-.shop-img-container img:hover #addtocart-btn{
-    transform: translateY(10%);
+.shop-img-container:hover .add-to-cart-btn{
+    transform: translateY(0%);
 }
 .add-to-cart-btn{
-    height: 3rem;
+    height: 25%;
     width: 100%;
     background-color: var(--yellow-coffee);
     position: absolute;
@@ -484,6 +483,65 @@ i{
     transform: translateY(100%);
     cursor: pointer;
     transition: all 0.3s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.add-to-cart-btn span{
+    margin: 0 0.3rem;
+    text-transform: uppercase;
+    font-family: var(--tertiary-font);
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+.shop-text-container{
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+.shop-text-container h2{
+    color: var(--white-headings);
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    font-weight: lighter;
+}
+.star-rating{
+    color: var(--yellow-coffee);
+    margin-bottom: 8px;
+}
+.shop-price{
+    font-family: var(--primary-font);
+    color: var(--yellow-coffee);
+    font-size: 1.4rem;
+}
+.crossed{
+    color: var(--grey-para);
+    text-decoration: line-through;
+    font-size: 1rem;
+}
+.shop-show-more{
+    background-color: transparent;
+    font-family: var(--tertiary-font);
+    border: 2px solid var(--white-headings);
+    font-weight: bold;
+    padding: 0.8rem 1.4rem;
+    transition: all 0.3s ease-in;
+    color: var(--white-headings);
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    left: 5rem;
+}
+.shop-show-more:hover{
+    background-color: var(--white-headings);
+    color:var(--dark-brown);
+}
+
+
 
 
