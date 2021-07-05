@@ -427,3 +427,63 @@ i{
     font-size: 14px;
 }
 
+.shop-heading-container{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.shop-heading-container .underline{
+    margin: auto;
+    width: 8rem;
+    height: 2px;
+}
+.shop-heading-container h2{
+    font-family: var(--primary-font);
+    font-style: italic;
+    color: var(--yellow-coffee);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.shop-heading-container h1{
+    color: var(--white-headings);
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: var(--spacing);
+}
+.shop-center-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 2rem;
+    margin: 1rem 5rem;
+}
+.shop-img-container{
+    position: relative;
+   /* overflow: hidden;  */
+}
+.shop-img-container img{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+    transition: all 0.3s linear;
+}
+.shop-img-container img:hover #addtocart-btn{
+    transform: translateY(10%);
+}
+.add-to-cart-btn{
+    height: 3rem;
+    width: 100%;
+    background-color: var(--yellow-coffee);
+    position: absolute;
+    color: white;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+
