@@ -16,12 +16,9 @@ const quoteBtns = document.querySelectorAll(".quote-btn");
 const quoteText = document.querySelector(".quote-text");
 const quotePerson = document.querySelector(".quote-person");
 const logoHero = document.querySelector(".logo-hero");
-console.log(window.innerWidth)
-if(screen.width<920)
-{
-    logoHero.src="/images/invis coffee logo (1).png";
-}
+const navigation = document.querySelector(".navigation");
 
+// quote btn functionality
 let countForQuotes = 0;
 
 quoteBtns.forEach((btn,index) =>{
@@ -35,7 +32,6 @@ quoteBtns.forEach((btn,index) =>{
         quotePerson.textContent = quotes[index].name;
     })
 })
-
 
 setInterval(()=>{
     countForQuotes++;
@@ -52,4 +48,13 @@ function changeQuote(x){
     })
     quoteBtns[x].classList.add("clicked-btn");
 }
-
+//quote
+//scroll fixed navbar
+window.addEventListener("scroll",()=>{
+    let scrollLength = window.pageYOffset;
+    let navbarHeight = navigation.getBoundingClientRect().height;
+    if(scrollLength>navbarHeight)
+        navigation.classList.add("fixed-nav");
+    else    
+        navigation.classList.remove("fixed-nav");
+})
