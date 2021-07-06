@@ -11,7 +11,7 @@
     --white-headings:#ffffff;
     --dark-brown:rgb(21, 20, 18);
     --light-brown:#eae7de;
-    --transition:all 0.5s linear;
+    --transition:all 0.3s linear;
     --spacing:4px;
     --shadow-light:0 5px 15px rgba(0,0,0,0.1);
     --shadow-dark:0 5px 15px rgba(0,0,0,0.2);
@@ -30,18 +30,25 @@ body{
     background-color: var(--dark-brown);
     font-family: var(--tertiary-font);
     color: var(--grey-para);
-    /* line-height: 1.5; */
+    overflow-x: hidden;    
 }
 .header{
     font-family: var(--secondary-font);
-    height: 100vh;
-    background:linear-gradient(rgba(21, 20, 18, 0.3),#000000b3),url('/images/image.jfif')  no-repeat left bottom/cover;
+    background:linear-gradient(rgba(21, 20, 18, 0.3),#000000b3),url('/images/image.jfif')  no-repeat bottom/cover;
 }
 /* navbar */
 .navigation{
     padding: 1rem 1.5rem;
     max-height: 10vh;
+    /* background-color: var(--dark-brown); */
+}
+.fixed-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: var(--dark-brown);
+    transition: var(--transition);
 }
 .nav-center{
     width: 100%;
@@ -76,6 +83,7 @@ body{
 }
 .toggle-btn{
     display: none;
+
 }
 ul{
     list-style: none;
@@ -85,6 +93,27 @@ a{
     color: var(--white-headings);
 }
 
+@media (max-width:920px){
+    
+    .navigation{
+        background-color: var(--white-headings);
+    }
+    .nav-center{
+        flex-wrap: wrap;
+    }
+    .link-container{
+        height: 0;
+        overflow: hidden;
+    }
+    .logo-container{
+        display: flex;
+        width: 100vw;
+        justify-content: space-between;
+    }
+    .toggle-btn{
+        display: block;
+    }
+}
 /* banner */
 .banner{
     height: 90vh;
@@ -218,9 +247,11 @@ section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
-    margin:4rem 8rem 0 8rem;
+    margin-top:4rem;
     column-gap: 2.5rem;
     text-align: left;
+    max-width: 90vw;
+    margin:auto
 }
 .whh-content h1{
     font-size: 1.5rem;
@@ -413,7 +444,16 @@ i{
     gap: 2rem;
     text-align: center;
     justify-content: center;
-    margin: 0 5rem
+    max-width: 90vw;
+    margin:auto;
+}
+.herocontent-container{
+    display: flex;
+    flex-direction: column;
+}
+.herocontent-container img{
+    width: 100%;
+    height: 100%;
 }
 .flavour-herocontent-container h2{
     margin: 1rem 0;

@@ -15,6 +15,12 @@ const quotes = [
 const quoteBtns = document.querySelectorAll(".quote-btn"); 
 const quoteText = document.querySelector(".quote-text");
 const quotePerson = document.querySelector(".quote-person");
+const logoHero = document.querySelector(".logo-hero");
+console.log(window.innerWidth)
+if(screen.width<920)
+{
+    logoHero.src="/images/invis coffee logo (1).png";
+}
 
 let countForQuotes = 0;
 
