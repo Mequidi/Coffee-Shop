@@ -179,6 +179,7 @@ a {
         width: 100%;
         padding: 0.4rem;
         transition: all 0.3s linear;
+        margin: 0;
     }
 
     .link-item:hover {
