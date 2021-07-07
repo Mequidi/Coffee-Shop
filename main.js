@@ -48,7 +48,7 @@ function changeQuote(x){
     })
     quoteBtns[x].classList.add("clicked-btn");
 }
-//quote
+// end quote
 //scroll fixed navbar
 window.addEventListener("scroll",()=>{
     let scrollLength = window.pageYOffset;
@@ -58,3 +58,4 @@ window.addEventListener("scroll",()=>{
     else    
         navigation.classList.remove("fixed-nav");
 })
+// end fixed navbar
