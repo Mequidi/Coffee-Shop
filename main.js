@@ -17,9 +17,12 @@ const quoteText = document.querySelector(".quote-text");
 const quotePerson = document.querySelector(".quote-person");
 const logoHero = document.querySelector(".logo-hero");
 const navigation = document.querySelector(".navigation");
+const links = document.querySelector(".links");
+const allLinks = document.querySelectorAll(".link-item");
 
 // quote btn functionality
 let countForQuotes = 0;
+let containerHeight = 0;
 
 quoteBtns.forEach((btn,index) =>{
     btn.addEventListener("click",()=>{
@@ -59,3 +62,22 @@ window.addEventListener("scroll",()=>{
         navigation.classList.remove("fixed-nav");
 })
 // end fixed navbar
+//toggle navbar
+document.querySelector(".toggle-btn").addEventListener("click",()=>{
+    console.log("btn clicked!");
+    // links.classList.toggle("show-links");
+    allLinks.forEach(function(item){
+        containerHeight += item.getBoundingClientRect().height;
+    })
+    if(links.getBoundingClientRect().height === 0)
+    { 
+        links.style.height = `${containerHeight}px`;
+        links.classList.add("show-links");   
+    }
+    else
+    {    
+        links.style.height = `0px`;
+        containerHeight = 0;
+        links.classList.remove("show-links");
+    } 
+})
