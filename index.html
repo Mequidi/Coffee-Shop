@@ -11,7 +11,7 @@
 
 <body>
     <!-- header start -->
-    <header class="header" id="header">
+    <header class="header" id="home">
         <!-- nav start -->
         <nav class="navigation">
             <div class="nav-center">
@@ -23,11 +23,12 @@
                 </div>
                 <div class="link-container">
                     <ul class="links">
-                        <li><a href="#" class="link-item">home</a></li>
-                        <li><a href="#" class="link-item">about</a></li>
-                        <li><a href="#" class="link-item">free drink</a></li>
-                        <li><a href="#" class="link-item">work</a></li>
-                        <li><a href="#" class="link-item">contact</a></li>
+                        <li><a href="#home" class="link-item" id="home-link">home</a></li>
+                        <li><a href="#about" class="link-item">about</a></li>
+                        <li><a href="#flavours" class="link-item">flavours</a></li>
+                        <li><a href="#shop" class="link-item">shop</a></li>
+                        <li><a href="#work" class="link-item">work</a></li>
+                        <li><a href="#contacts" class="link-item">contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -61,7 +62,7 @@
     <!-- header end -->
 
     <!-- about section start -->
-    <section class="about">
+    <section class="about" id="about">
         <div class="about-container">
 
             <article class="about-article">
@@ -223,7 +224,7 @@
         </div>
     </section>
 
-    <section class="flavours">
+    <section class="flavours" id="flavours">
         <div class="flavour-heading-container">
             <h2>choose one of our flavours</h2>
             <h1>coffee build your base.</h1>
@@ -281,7 +282,7 @@
         </div>
     </section>
 
-    <section class="shop">
+    <section class="shop" id="shop">
         <div class="shop-heading-container">
             <h2>make your own coffee</h2>
             <h1>coffee build your base.</h1>
@@ -374,7 +375,7 @@
         </div>
         
     </section>
-    <section class="grid-images">
+    <section class="grid-images" id="work"> 
         <div class="grid-images-container">
             <div class="grid-image-container">
                 <img class="grid-image" src="/images/grid images/home-1-gallery-1.jpg">
@@ -402,7 +403,8 @@
             </div>
         </div>
     </section>
-    <section class="before-footer">
+    <section id="contacts" class="before-footer">
+       
         <div class="before-footer-container">
             <div class="latest-posts article-div">
                 <h2 class="before-footer-title">latest posts</h2>
@@ -427,6 +429,9 @@
                 </div>
             </div>
             <div class="contact-us article-div">
+                <div class="email-conform">
+                    <p id="alert-message"></p>
+                </div>
                 <h2 class="before-footer-title">contact us</h2>
                 <div class="contact-us-info">
                     <a href="mailto:nikhilsejwal234@gmail.com">coffeesource@crooked.com</a>
@@ -435,7 +440,7 @@
                     <p>New York</p>
                 </div>
                 <h2 class="before-footer-title">the last standard post</h2>
-                <form action="none">
+                <form action="" autocomplete="off" id="submit-form">
                     <input type="text" placeholder="Your E-Mail" id="input">
                     <button class="submit-email-btn" type="submit"><i class="fas fa-caret-right"></i></button>
                 </form>
