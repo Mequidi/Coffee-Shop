@@ -39,7 +39,9 @@ submitForm.addEventListener("submit",(e)=>{
     e.preventDefault();
 })
 
-
+topBtn.addEventListener("click",()=>{
+    window.scrollTo({top:0,left:0});
+})
 quoteBtns.forEach((btn,index) =>{
     btn.addEventListener("click",()=>{
         quoteBtns.forEach((thatBtn)=>{
