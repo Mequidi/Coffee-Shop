@@ -21,6 +21,8 @@ const links = document.querySelector(".links");
 const allLinks = document.querySelectorAll(".link-item");
 const topBtn = document.querySelector(".back-to-top");
 const submitEmail = document.querySelector(".submit-email-btn");
+const cartBtn = document.querySelector(".cart-btn");
+const shoppingSidebar = document.querySelector(".shopping-sidebar")
 
 const alertMessage = document.getElementById("alert-message");
 const input = document.getElementById("input");
@@ -38,7 +40,10 @@ window.addEventListener("load",()=>{
 submitForm.addEventListener("submit",(e)=>{
     e.preventDefault();
 })
-
+cartBtn.addEventListener("click",()=>{
+    console.log("btn clicked");
+    shoppingSidebar.classList.toggle("show-sidebar");
+})
 topBtn.addEventListener("click",()=>{
     window.scrollTo({top:0,left:0});
 })
