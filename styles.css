@@ -48,6 +48,7 @@ button{
     padding: 1rem 1.5rem;
     z-index: 999;
     background-color: var(--dark-brown);
+    border-bottom: 2px solid var(--dark-brown);
 }
 
 .fixed-nav {
@@ -93,7 +94,7 @@ button{
 @media(min-width:920px)
 {
     .links{
-        height: 100%!important;    
+        height: 100%!important;
     }
 }
 
@@ -144,6 +145,7 @@ button{
     /* border: 2px solid var(--dark-brown);
     border-radius: 50%; 
     padding: 0.3rem; */
+    margin-right: 1.5rem;
 
 }
 .cart-btn:hover{
@@ -240,6 +242,7 @@ a {
     }
     .cart-btn{
         color: var(--dark-brown);
+        margin: 0;
     } 
     .seperation{
         background-color: var(--dark-brown);
@@ -254,10 +257,10 @@ a {
 /* sidebar  */
 .shopping-sidebar{
     position:fixed;
-    top: 11vh;
+    top: 11.5vh;
     right: 0;
     height: 89vh;
-    width: 35vw;
+    width: 22rem;
     background-color: var(--white-headings);
     padding:0 1rem 1rem 1rem;
     z-index: 999;
@@ -269,7 +272,7 @@ a {
     transform: translateX(0);
 }
 .overline{
-    width: 100%;
+    width: 120%;
     height: 2px;
     background-color: var(--yellow-coffee);
     margin: 0 -1rem;
