@@ -135,6 +135,7 @@ const cartBtn = document.querySelector(".cart-btn");
 const shoppingSidebar = document.querySelector(".shopping-sidebar");
 const shopCenterContainer = document.querySelector(".shop-center-container");
 const shopShowMore = document.querySelector(".shop-show-more");
+const removeItemBtns = document.querySelectorAll(".remove-item");
 
 const alertMessage = document.getElementById("alert-message");
 const input = document.getElementById("input");
@@ -149,6 +150,7 @@ window.addEventListener("load", () => {
     if (alertMessage.textContent == "")
         alertMessage.style.display = "none";
     addShopItems();
+    updateTotalPrice();
 })
 
 
@@ -295,6 +297,16 @@ allLinks.forEach((item) => {
         }
     })
 })
+removeItemBtns.forEach((removeBtn)=>{
+    removeBtn.addEventListener("click",(e)=>{
+        const infoContainer = e.currentTarget.previousElementSibling;
+        const itemName = infoContainer.querySelector(".shopping-item-name").textContent;
+        console.log(itemName);
+        e.currentTarget.parentElement.remove();
+        updateTotalPrice();
+    })
+})
+
 
 function displayMessage(message, type) {
     alertMessage.style.display = "inline";
@@ -356,6 +368,19 @@ function calcStars(stars){
     }
     return returnString;
 }  
+
+function updateTotalPrice(){
+    let totalPrice = 0;
+    const items = document.querySelectorAll(".item");
+    items.forEach((item)=>{
+        let itemPrice = item.getElementsByClassName("shopping-item-price")[0].textContent;
+        itemPrice = parseInt(itemPrice.slice(1));
+        let itemQuantityContainer = item.querySelector(".shopping-item-quantity");
+        let itemQuantity = itemQuantityContainer.firstElementChild.textContent;
+        totalPrice += itemQuantity*itemPrice;
+    })
+    document.getElementById("tprice-price").textContent = `$${totalPrice}`;
+}
     // let itemCode = `<div class="shop-item">
                     //     <div class="shop-img-container">
                     //         <img src="/images/shop/shop1.jpg">

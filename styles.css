@@ -924,7 +924,7 @@ i {
     color: white;
     bottom: 0;
     left: 0;
-    transform: translateY(100%);
+    transform: translateY(101%);
     cursor: pointer;
     transition: all 0.3s linear;
     display: flex;
