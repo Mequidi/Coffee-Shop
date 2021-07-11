@@ -261,6 +261,7 @@ a {
     right: 0;
     height: 89vh;
     width: 22rem;
+    /* width: 25vw; */
     background-color: var(--white-headings);
     padding:0 1rem 1rem 1rem;
     z-index: 999;
@@ -272,6 +273,11 @@ a {
 }
 .show-sidebar{
     transform: translateX(0);
+}
+@media(max-width:920px){
+    .shopping-sidebar{
+        width: 100vw;
+    }
 }
 .overline{
     width: 120%;

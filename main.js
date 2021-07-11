@@ -12,15 +12,15 @@ const quotes = [{
     }
 ]
 
-const shopItemsArray = [
-    {
+const shopItemsArray = [{
         id: 1,
         imgSrc: "/images/shop/shop1.jpg",
         name: "paper brouch",
         stars: 3.5,
         price: 46.00,
         isreducedPrice: false,
-        reducedPrice: 46.00 
+        reducedPrice: 46.00,
+        clickCount: 0
     },
     {
         id: 2,
@@ -29,7 +29,8 @@ const shopItemsArray = [
         stars: 4.5,
         price: 98.00,
         isreducedPrice: true,
-        reducedPrice: 79.00 
+        reducedPrice: 79.00,
+        clickCount: 0
     },
     {
         id: 3,
@@ -38,7 +39,8 @@ const shopItemsArray = [
         stars: 5,
         price: 27.00,
         isreducedPrice: false,
-        reducedPrice: 27.00 
+        reducedPrice: 27.00,
+        clickCount: 0
     },
     {
         id: 4,
@@ -47,7 +49,8 @@ const shopItemsArray = [
         stars: 4,
         price: 71.00,
         isreducedPrice: true,
-        reducedPrice: 71.00 
+        reducedPrice: 71.00,
+        clickCount: 0
     },
     {
         id: 5,
@@ -56,7 +59,8 @@ const shopItemsArray = [
         stars: 4.5,
         price: 31.00,
         isreducedPrice: false,
-        reducedPrice: 31.00 
+        reducedPrice: 31.00,
+        clickCount: 0
     },
     {
         id: 6,
@@ -65,7 +69,8 @@ const shopItemsArray = [
         stars: 4,
         price: 31.00,
         isreducedPrice: false,
-        reducedPrice: 31.00 
+        reducedPrice: 31.00,
+        clickCount: 0
     },
     {
         id: 7,
@@ -74,7 +79,8 @@ const shopItemsArray = [
         stars: 4.5,
         price: 63.00,
         isreducedPrice: false,
-        reducedPrice: 63.00 
+        reducedPrice: 63.00,
+        clickCount: 0
     },
     {
         id: 8,
@@ -83,7 +89,8 @@ const shopItemsArray = [
         stars: 3.5,
         price: 75.00,
         isreducedPrice: false,
-        reducedPrice: 75.00 
+        reducedPrice: 75.00,
+        clickCount: 0
     },
     {
         id: 9,
@@ -92,7 +99,8 @@ const shopItemsArray = [
         stars: 5,
         price: 32.00,
         isreducedPrice: true,
-        reducedPrice: 18.00 
+        reducedPrice: 18.00,
+        clickCount: 0
     },
     {
         id: 10,
@@ -101,7 +109,8 @@ const shopItemsArray = [
         stars: 5,
         price: 29.00,
         isreducedPrice: false,
-        reducedPrice: 29.00 
+        reducedPrice: 29.00,
+        clickCount: 0
     },
     {
         id: 11,
@@ -110,7 +119,8 @@ const shopItemsArray = [
         stars: 3.5,
         price: 46.00,
         isreducedPrice: false,
-        reducedPrice: 46.00 
+        reducedPrice: 46.00,
+        clickCount: 0
     },
     {
         id: 12,
@@ -119,7 +129,8 @@ const shopItemsArray = [
         stars: 4,
         price: 35.00,
         isreducedPrice: false,
-        reducedPrice: 22.00 
+        reducedPrice: 22.00,
+        clickCount: 0
     }
 ];
 const quoteBtns = document.querySelectorAll(".quote-btn");
@@ -135,8 +146,8 @@ const cartBtn = document.querySelector(".cart-btn");
 const shoppingSidebar = document.querySelector(".shopping-sidebar");
 const shopCenterContainer = document.querySelector(".shop-center-container");
 const shopShowMore = document.querySelector(".shop-show-more");
-const removeItemBtns = document.querySelectorAll(".remove-item");
 const readMoreBtn = document.querySelector("read-more");
+
 
 const alertMessage = document.getElementById("alert-message");
 const input = document.getElementById("input");
@@ -175,8 +186,10 @@ cartBtn.addEventListener("click", () => {
     }
 })
 // readMoreBtn.addEventListener("click",()=>{
-    
+
 // })
+
+
 topBtn.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
@@ -254,7 +267,7 @@ submitEmail.addEventListener("click", () => {
     }
 })
 
-shopShowMore.addEventListener("click",()=>{
+shopShowMore.addEventListener("click", () => {
     addShopItems();
 })
 
@@ -298,14 +311,7 @@ allLinks.forEach((item) => {
         }
     })
 })
-removeItemBtns.forEach((removeBtn)=>{
-    removeBtn.addEventListener("click",(e)=>{
-        const infoContainer = e.currentTarget.previousElementSibling;
-        const itemName = infoContainer.querySelector(".shopping-item-name").textContent;
-        e.currentTarget.parentElement.remove();
-        updateTotalPrice();
-    })
-})
+
 
 
 function displayMessage(message, type) {
@@ -318,10 +324,11 @@ function displayMessage(message, type) {
         alertMessage.style.display = "none";
     }, 1000);
 }
-function addShopItems(){
+
+function addShopItems() {
     console.log("entered function")
-    let tempArray = shopItemsArray.slice(countForShop,countForShop+4)
-    tempArray.forEach((item)=>{
+    let tempArray = shopItemsArray.slice(countForShop, countForShop + 4)
+    tempArray.forEach((item) => {
         const divEl = document.createElement("div")
         divEl.innerHTML = `  <div class="shop-img-container">
                                 <img class="shop-image" src=${item.imgSrc}>
@@ -331,7 +338,7 @@ function addShopItems(){
                                 </div>
                             </div>
                             <div class="shop-text-container">
-                                <h2 class="shop-item-name">${item.name}</h2>
+                                <h2 class="shop-item-name" data-id="${item.id}">${item.name}</h2>
                                 <div class="star-rating">
                                     ${calcStars(item.stars)}
                                 </div>
@@ -341,62 +348,60 @@ function addShopItems(){
         shopCenterContainer.appendChild(divEl);
     })
     countForShop += 4;
-    if(countForShop >= shopItemsArray.length)
+    if (countForShop >= shopItemsArray.length)
         shopShowMore.style.display = "none";
-    
+
     let addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
-    addToCartBtns.forEach((addToCartBtn,index)=>{
-        addToCartBtn.addEventListener("click",(e)=>{
-            addBtnClickedCount[index] ++;
+    addToCartBtns.forEach((addToCartBtn) => {
+        addToCartBtn.addEventListener("click", (e) => {
             const shopImgContainer = e.currentTarget.parentElement;
             const shopTextContainer = shopImgContainer.nextElementSibling;
             const imgSrc = shopImgContainer.querySelector(".shop-image").src;
             const itemName = shopTextContainer.querySelector(".shop-item-name").textContent;
+            const itemId = shopTextContainer.querySelector(".shop-item-name").dataset.id;
+            shopItemsArray[itemId].clickCount++;
             const itemPrice = (shopTextContainer.querySelector(".shop-price").textContent).slice(1);
-            addElementsToCart(imgSrc,itemName,itemPrice)
+            addElementsToCart(imgSrc,itemName,itemPrice,itemId)
         })
     })
 }
-function calcStars(stars){  
+function calcStars(stars) {
     let returnString = ``
     const completeStars = Math.floor(stars);
-    const decimalstar = stars-completeStars;
-    for(i=0;i<completeStars;i++)
-    {
+    const decimalstar = stars - completeStars;
+    for (i = 0; i < completeStars; i++) {
         returnString += `<span><i class="fas fa-star"></i></span>`
     }
-    if(completeStars!=5)    
-        if(decimalstar == 0.5)
-        {
+    if (completeStars != 5)
+        if (decimalstar == 0.5) {
             returnString += `<span><i class="fas fa-star-half-alt"></i></span>`
         }
-        else
-            returnString += `<span><i class="far fa-star"></i></span>`
-    while(true){
+    else
+        returnString += `<span><i class="far fa-star"></i></span>`
+    while (true) {
         noOfSpans = returnString.match(/<span>/g).length;
-        if(noOfSpans<5)
+        if (noOfSpans < 5)
             returnString += `<span><i class="far fa-star"></i></span>`
         else
             break;
     }
     return returnString;
-}  
+}
 
-function updateTotalPrice(){
+function updateTotalPrice() {
     let totalPrice = 0;
     const items = document.querySelectorAll(".item");
-    items.forEach((item)=>{
+    items.forEach((item) => {
         let itemPrice = item.getElementsByClassName("shopping-item-price")[0].textContent;
         itemPrice = parseInt(itemPrice.slice(1));
         let itemQuantityContainer = item.querySelector(".shopping-item-quantity");
         let itemQuantity = itemQuantityContainer.firstElementChild.textContent;
-        totalPrice += itemQuantity*itemPrice;
+        totalPrice += itemQuantity * itemPrice;
     })
     document.getElementById("tprice-price").textContent = `$${totalPrice}`;
 }
 
-function addElementsToCart(src,name,price)
-{
+function addElementsToCart(src,name,price,id) {
     const divEl = document.createElement("div")
     divEl.classList.add("item")
     const cartItemsContainer = document.querySelector(".items")
@@ -404,34 +409,89 @@ function addElementsToCart(src,name,price)
     const divElInnerHTML = `      
                         <img src=${src} class="item-image">
                         <div class="middle-of-item">
-                        <h2 class="shopping-item-name">${name}</h2>
-                            <p class="shopping-item-quantity">quantity : <span id="actual-quantity">4</span></p>
+                            <h2 class="shopping-item-name" data-id="${id}">${name}</h2>
+                             <p class="shopping-item-quantity">
+                             quantity : <span id="actual-quantity">${shopItemsArray[id].clickCount}</span>
+                             </p>
                             <h3 class="shopping-item-price">$ ${price}</h3>
                         </div>
                         <button class="remove-item">
                             <i class="fas fa-times"></i>
                         </button>
         `
-        divEl.innerHTML = divElInnerHTML;
-        updateTotalPrice();
+    divEl.innerHTML = divElInnerHTML;
+
+    const tempItems = cartItemsContainer.querySelectorAll(".item")
+    tempItems.forEach((tempItem)=>{
+        const moi = tempItem.querySelector(".middle-of-item");
+        const itemName = moi.querySelector(".shopping-item-name").textContent;
+        const tempItemId = moi.querySelector(".shopping-item-name").datset.id;
+        const itemQuantityContainer = moi.querySelector(".shopping-item-quantity");
+        const itemQuantity = itemQuantityContainer.querySelector("span").textContent
+        if(itemName == name && itemQuantity!=shopItemsArray[tempItemId].clickCount)
+            tempItem.remove();
+    })
+
+    updateTotalPrice();
+    removeItemFromCart();
 }
-    // let itemCode = `<div class="shop-item">
-                    //     <div class="shop-img-container">
-                    //         <img src="/images/shop/shop1.jpg">
-                    //         <div class="add-to-cart-btn">
-                    //             <i class="fas fa-cart-plus shopping-cart"></i>
-                    //             <span>add to cart</span>
-                    //         </div>
-                    //     </div>
-                    //     <div class="shop-text-container">
-                    //         <h2>paper brouch</h2>
-                    //             <div class="star-rating">
-                    //                 <span><i class="fas fa-star"></i></span>
-                    //                 <span><i class="fas fa-star"></i></span>
-                    //                 <span><i class="fas fa-star"></i></span>
-                    //                 <span><i class="fas fa-star-half-alt"></i></span>
-                    //                 <span><i class="far fa-star"></i></span>
-                    //             </div>
-                    //         <p class="shop-price">$46.00</p>
-                    //     </div>
-                    // </div>`
+
+function removeItemFromCart (){
+    const removeItemBtns = document.querySelectorAll(".remove-item");
+
+    removeItemBtns.forEach((removeBtn) => {
+        removeBtn.addEventListener("click", (e) => {
+            const infoContainer = e.currentTarget.previousElementSibling;
+            const itemQuantityContainer = infoContainer.querySelector(".shopping-item-quantity");
+            const itemId = infoContainer.querySelector(".shopping-item-name").dataset.id;
+            const itemQuantity = itemQuantityContainer.querySelector("span");
+            
+            if(itemQuantity.textContent==1){
+                shopItemsArray[itemId].clickCount=0;
+                e.currentTarget.parentElement.remove();
+                console.log(itemId);
+            }
+            else if(itemQuantity){
+                shopItemsArray[itemId].clickCount--;
+                itemQuantity.textContent--;
+            }
+            updateTotalPrice();
+        })
+    })
+}
+
+/* item element sample
+    
+     <div class="item">
+<img src="/images/shop/shop1.jpg" class="item-image">
+<div class="middle-of-item">  
+    <h2 class="shopping-item-name">item 3</h2>
+    <p class="shopping-item-quantity">quantity :<span id="actual-quantity">1</span></p>
+    <h3 class="shopping-item-price">$ 79.00</h3>
+</div>
+<button class="remove-item">
+    <i class="fas fa-times"></i>
+</button>
+</div> */
+
+
+// let itemCode = `<div class="shop-item">
+//     <div class="shop-img-container">
+//         <img src="/images/shop/shop1.jpg">
+//         <div class="add-to-cart-btn">
+//             <i class="fas fa-cart-plus shopping-cart"></i>
+//             <span>add to cart</span>
+//         </div>
+//     </div>
+//     <div class="shop-text-container">
+//         <h2>paper brouch</h2>
+//             <div class="star-rating">
+//                 <span><i class="fas fa-star"></i></span>
+//                 <span><i class="fas fa-star"></i></span>
+//                 <span><i class="fas fa-star"></i></span>
+//                 <span><i class="fas fa-star-half-alt"></i></span>
+//                 <span><i class="far fa-star"></i></span>
+//             </div>
+//         <p class="shop-price">$46.00</p>
+//     </div>
+// </div>`
