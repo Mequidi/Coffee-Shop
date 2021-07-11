@@ -136,6 +136,7 @@ const shoppingSidebar = document.querySelector(".shopping-sidebar");
 const shopCenterContainer = document.querySelector(".shop-center-container");
 const shopShowMore = document.querySelector(".shop-show-more");
 const removeItemBtns = document.querySelectorAll(".remove-item");
+const readMoreBtn = document.querySelector("read-more");
 
 const alertMessage = document.getElementById("alert-message");
 const input = document.getElementById("input");
@@ -145,12 +146,19 @@ const submitForm = document.getElementById('submit-form');
 let countForQuotes = 0;
 let containerHeight = 0;
 let countForShop = 0;
+let addBtnClickedCount = [];
 
 window.addEventListener("load", () => {
     if (alertMessage.textContent == "")
         alertMessage.style.display = "none";
     addShopItems();
     updateTotalPrice();
+    setInterval(() => {
+        countForQuotes++;
+        if (countForQuotes > 2)
+            countForQuotes = 0;
+        changeQuote(countForQuotes);
+    }, 5000);
 })
 
 
@@ -158,7 +166,6 @@ submitForm.addEventListener("submit", (e) => {
     e.preventDefault();
 })
 cartBtn.addEventListener("click", () => {
-    console.log("btn clicked");
     shoppingSidebar.classList.toggle("show-sidebar");
     //closes links
     if (links.classList.contains("show-links") && shoppingSidebar.classList.contains("show-sidebar")) {
@@ -167,6 +174,9 @@ cartBtn.addEventListener("click", () => {
         links.classList.remove("show-links");
     }
 })
+// readMoreBtn.addEventListener("click",()=>{
+    
+// })
 topBtn.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
@@ -184,13 +194,6 @@ quoteBtns.forEach((btn, index) => {
         quotePerson.textContent = quotes[index].name;
     })
 })
-
-setInterval(() => {
-    countForQuotes++;
-    if (countForQuotes > 2)
-        countForQuotes = 0;
-    changeQuote(countForQuotes);
-}, 5000);
 
 function changeQuote(x) {
     quoteText.textContent = quotes[x].text;
@@ -235,7 +238,6 @@ document.querySelector(".toggle-btn").addEventListener("click", (e) => {
 
 submitEmail.addEventListener("click", () => {
     const inputText = input.value;
-    console.log(inputText)
     if (!input.value) {
         displayMessage("Email left empty!", "danger")
     } else
@@ -251,6 +253,7 @@ submitEmail.addEventListener("click", () => {
         }
     }
 })
+
 shopShowMore.addEventListener("click",()=>{
     addShopItems();
 })
@@ -268,11 +271,9 @@ allLinks.forEach(function (item) {
         let position = element.offsetTop - navHeight;
 
         if (!fixedNav) {
-            console.log("if statement entered");
             position = position - navHeight;
         }
         if (links.getBoundingClientRect().height > 80) {
-            console.log("else if loop entered");
             position = position + linkContainerHeight;
         }
 
@@ -301,7 +302,6 @@ removeItemBtns.forEach((removeBtn)=>{
     removeBtn.addEventListener("click",(e)=>{
         const infoContainer = e.currentTarget.previousElementSibling;
         const itemName = infoContainer.querySelector(".shopping-item-name").textContent;
-        console.log(itemName);
         e.currentTarget.parentElement.remove();
         updateTotalPrice();
     })
@@ -324,18 +324,18 @@ function addShopItems(){
     tempArray.forEach((item)=>{
         const divEl = document.createElement("div")
         divEl.innerHTML = `  <div class="shop-img-container">
-                                <img src=${item.imgSrc}>
+                                <img class="shop-image" src=${item.imgSrc}>
                                 <div class="add-to-cart-btn">
                                     <i class="fas fa-cart-plus shopping-cart"></i>
                                     <span>add to cart</span>
                                 </div>
                             </div>
                             <div class="shop-text-container">
-                                <h2>${item.name}</h2>
+                                <h2 class="shop-item-name">${item.name}</h2>
                                 <div class="star-rating">
                                     ${calcStars(item.stars)}
                                 </div>
-                                    <p class="shop-price">$${item.price}</p>
+                                <p class="shop-price">$${item.price}</p>
                             </div>`
         divEl.classList.add("shop-item");
         shopCenterContainer.appendChild(divEl);
@@ -343,6 +343,19 @@ function addShopItems(){
     countForShop += 4;
     if(countForShop >= shopItemsArray.length)
         shopShowMore.style.display = "none";
+    
+    let addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
+    addToCartBtns.forEach((addToCartBtn,index)=>{
+        addToCartBtn.addEventListener("click",(e)=>{
+            addBtnClickedCount[index] ++;
+            const shopImgContainer = e.currentTarget.parentElement;
+            const shopTextContainer = shopImgContainer.nextElementSibling;
+            const imgSrc = shopImgContainer.querySelector(".shop-image").src;
+            const itemName = shopTextContainer.querySelector(".shop-item-name").textContent;
+            const itemPrice = (shopTextContainer.querySelector(".shop-price").textContent).slice(1);
+            addElementsToCart(imgSrc,itemName,itemPrice)
+        })
+    })
 }
 function calcStars(stars){  
     let returnString = ``
@@ -380,6 +393,27 @@ function updateTotalPrice(){
         totalPrice += itemQuantity*itemPrice;
     })
     document.getElementById("tprice-price").textContent = `$${totalPrice}`;
+}
+
+function addElementsToCart(src,name,price)
+{
+    const divEl = document.createElement("div")
+    divEl.classList.add("item")
+    const cartItemsContainer = document.querySelector(".items")
+    cartItemsContainer.append(divEl);
+    const divElInnerHTML = `      
+                        <img src=${src} class="item-image">
+                        <div class="middle-of-item">
+                        <h2 class="shopping-item-name">${name}</h2>
+                            <p class="shopping-item-quantity">quantity : <span id="actual-quantity">4</span></p>
+                            <h3 class="shopping-item-price">$ ${price}</h3>
+                        </div>
+                        <button class="remove-item">
+                            <i class="fas fa-times"></i>
+                        </button>
+        `
+        divEl.innerHTML = divElInnerHTML;
+        updateTotalPrice();
 }
     // let itemCode = `<div class="shop-item">
                     //     <div class="shop-img-container">

@@ -267,6 +267,8 @@ a {
     text-transform: capitalize;
     transform: translateX(101%);
     transition: all 0.3s linear;
+    overflow-y: scroll;
+    overflow-x:hidden;
 }
 .show-sidebar{
     transform: translateX(0);
@@ -414,6 +416,12 @@ a {
 
 .read-more:hover {
     background-color: var(--white-headings);
+    color: var(--dark-brown)!important;
+}
+.read-more-href{
+    transition: all 0.3s ease-in;
+}
+.read-more:hover .read-more-href{
     color: var(--dark-brown);
 }
 
