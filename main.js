@@ -421,11 +421,12 @@ function addElementsToCart(src,name,price,id) {
         `
     divEl.innerHTML = divElInnerHTML;
 
+    console.log("id = "+id);
     const tempItems = cartItemsContainer.querySelectorAll(".item")
     tempItems.forEach((tempItem)=>{
         const moi = tempItem.querySelector(".middle-of-item");
         const itemName = moi.querySelector(".shopping-item-name").textContent;
-        const tempItemId = moi.querySelector(".shopping-item-name").datset.id;
+        const tempItemId = moi.querySelector(".shopping-item-name").dataset.id;
         const itemQuantityContainer = moi.querySelector(".shopping-item-quantity");
         const itemQuantity = itemQuantityContainer.querySelector("span").textContent
         if(itemName == name && itemQuantity!=shopItemsArray[tempItemId].clickCount)
@@ -445,14 +446,18 @@ function removeItemFromCart (){
             const itemQuantityContainer = infoContainer.querySelector(".shopping-item-quantity");
             const itemId = infoContainer.querySelector(".shopping-item-name").dataset.id;
             const itemQuantity = itemQuantityContainer.querySelector("span");
+            const cartLength = document.querySelectorAll(".item").length;
             
-            if(itemQuantity.textContent==1){
+            if(parseInt(itemQuantity.textContent)==1){
+                console.log("id="+ itemId + " removed");
                 shopItemsArray[itemId].clickCount=0;
+                console.log(shopItemsArray[itemId].clickCount);
                 e.currentTarget.parentElement.remove();
-                console.log(itemId);
             }
-            else if(itemQuantity){
+            else if(cartLength){
+                console.log("id="+ itemId + " reduced");
                 shopItemsArray[itemId].clickCount--;
+                console.log(shopItemsArray[itemId].clickCount);
                 itemQuantity.textContent--;
             }
             updateTotalPrice();
