@@ -415,7 +415,7 @@ function addElementsToCart(src,name,price,id) {
                              </p>
                             <h3 class="shopping-item-price">$ ${price}</h3>
                         </div>
-                        <button class="remove-item">
+                        <button class="remove-item" onclick="removeItemFromCart(event)">
                             <i class="fas fa-times"></i>
                         </button>
         `
@@ -434,35 +434,59 @@ function addElementsToCart(src,name,price,id) {
     })
 
     updateTotalPrice();
-    removeItemFromCart();
 }
 
-function removeItemFromCart (){
-    const removeItemBtns = document.querySelectorAll(".remove-item");
+function removeItemFromCart(event){
+    const btnTarget = event.currentTarget;
+    const infoContainer = btnTarget.previousElementSibling;
+    const targetItem = btnTarget.parentElement
+    const targetId = infoContainer.querySelector(".shopping-item-name").dataset.id;
+    const targetQuantity = infoContainer.querySelector(".shopping-item-quantity").querySelector("#actual-quantity");
+    let targetQuantityValue = parseInt(targetQuantity.textContent);
+    console.log(targetQuantityValue)
+    if(targetQuantityValue == 1){
+        targetItem.remove();
+    }  
+    else{
+        targetQuantity.textContent = targetQuantityValue-1 ;
+    } 
+    
+    
+        updateTotalPrice();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // const removeItemBtns = document.querySelectorAll(".remove-item");
 
-    removeItemBtns.forEach((removeBtn) => {
-        removeBtn.addEventListener("click", (e) => {
-            const infoContainer = e.currentTarget.previousElementSibling;
-            const itemQuantityContainer = infoContainer.querySelector(".shopping-item-quantity");
-            const itemId = infoContainer.querySelector(".shopping-item-name").dataset.id;
-            const itemQuantity = itemQuantityContainer.querySelector("span");
-            const cartLength = document.querySelectorAll(".item").length;
+    // removeItemBtns.forEach((removeBtn) => {
+    //     removeBtn.addEventListener("click", (e) => {
+    //         const infoContainer = e.currentTarget.previousElementSibling;
+    //         const itemQuantityContainer = infoContainer.querySelector(".shopping-item-quantity");
+    //         const itemId = infoContainer.querySelector(".shopping-item-name").dataset.id;
+    //         const itemQuantity = itemQuantityContainer.querySelector("span");
+    //         const cartLength = document.querySelectorAll(".item").length;
             
-            if(parseInt(itemQuantity.textContent)==1){
-                console.log("id="+ itemId + " removed");
-                shopItemsArray[itemId].clickCount=0;
-                console.log(shopItemsArray[itemId].clickCount);
-                e.currentTarget.parentElement.remove();
-            }
-            else if(cartLength){
-                console.log("id="+ itemId + " reduced");
-                shopItemsArray[itemId].clickCount--;
-                console.log(shopItemsArray[itemId].clickCount);
-                itemQuantity.textContent--;
-            }
-            updateTotalPrice();
-        })
-    })
+    //         if(parseInt(itemQuantity.textContent)==1){
+    //             console.log("id="+ itemId + " removed");
+    //             shopItemsArray[itemId].clickCount=0;
+    //             console.log(shopItemsArray[itemId].clickCount);
+    //             e.currentTarget.parentElement.remove();
+    //         }
+    //         else if(cartLength){
+    //             console.log("id="+ itemId + " reduced");
+    //             shopItemsArray[itemId].clickCount--;
+    //             console.log(shopItemsArray[itemId].clickCount);
+    //             itemQuantity.textContent--;
+    //         }
+    //         updateTotalPrice();
+    //     })
+    //  })
 }
 
 /* item element sample
